@@ -1,7 +1,12 @@
 NetflixStudy
 ==============================
 
-Study of Netflix Trends
+Study of Netflix Trends for Dr. Lei HanSheng of University of Texas RGV Masters Science in Computer Science
+
+Project Leader Steven Bowler 1oct2020
+
+See references directory below for original project definition.
+
 
 Project Organization
 ------------
