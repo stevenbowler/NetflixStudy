@@ -5,7 +5,7 @@ Study of Netflix Trends for Dr. Lei HanSheng of University of Texas RGV Masters 
 
 Project Leader Steven Bowler 1oct2020
 
-See references directory below for original project definition.
+See references directory below for original project definition, based on [Cookiecutter](www.cookiecutter.com) data sciences framework.
 
 
 Project Organization
