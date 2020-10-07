@@ -1,0 +1,120 @@
+---------------------------------------------------------------------------
+MemoryError                               Traceback (most recent call last)
+<ipython-input-41-1a60281e0aca> in <module>
+----> 1 df_p_profile.to_file('../data/raw/df_p_profile.html') # '../data/raw/df_p_profile.html'
+
+~\anaconda3\lib\site-packages\pandas_profiling\profile_report.py in to_file(self, output_file, silent)
+    254                 create_html_assets(output_file)
+    255 
+--> 256             data = self.to_html()
+    257 
+    258             if output_file.suffix != ".html":
+
+~\anaconda3\lib\site-packages\pandas_profiling\profile_report.py in to_html(self)
+    357 
+    358         """
+--> 359         return self.html
+    360 
+    361     def to_json(self) -> str:
+
+~\anaconda3\lib\site-packages\pandas_profiling\profile_report.py in html(self)
+    177     def html(self):
+    178         if self._html is None:
+--> 179             self._html = self._render_html()
+    180         return self._html
+    181 
+
+~\anaconda3\lib\site-packages\pandas_profiling\profile_report.py in _render_html(self)
+    284         from pandas_profiling.report.presentation.flavours import HTMLReport
+    285 
+--> 286         report = self.report
+    287 
+    288         disable_progress_bar = not config["progress_bar"].get(bool)
+
+~\anaconda3\lib\site-packages\pandas_profiling\profile_report.py in report(self)
+    171     def report(self):
+    172         if self._report is None:
+--> 173             self._report = get_report_structure(self.description_set)
+    174         return self._report
+    175 
+
+~\anaconda3\lib\site-packages\pandas_profiling\profile_report.py in description_set(self)
+    152     def description_set(self):
+    153         if self._description_set is None:
+--> 154             self._description_set = describe_df(self.title, self.df, self._sample)
+    155         return self._description_set
+    156 
+
+~\anaconda3\lib\site-packages\pandas_profiling\model\describe.py in describe(title, df, sample)
+     88         for correlation_name in correlation_names:
+     89             pbar.set_postfix_str(f"Calculate {correlation_name} correlation")
+---> 90             correlations[correlation_name] = calculate_correlation(
+     91                 df, variables, correlation_name
+     92             )
+
+~\anaconda3\lib\site-packages\pandas_profiling\model\correlations.py in calculate_correlation(df, variables, correlation_name)
+    166             if len(selcols) > 1:
+    167                 try:
+--> 168                     correlation = df[selcols].phik_matrix(interval_cols=intcols)
+    169 
+    170                     # Only do this if the column_order is set
+
+~\anaconda3\lib\site-packages\phik\phik.py in phik_matrix(df, interval_cols, bins, quantile, noise_correction, dropna, drop_underflow, drop_overflow)
+    212     df_clean, interval_cols_clean = dq_check_nunique_values(df, interval_cols, dropna=dropna)
+    213 
+--> 214     data_binned, binning_dict = bin_data(df_clean, cols=interval_cols_clean, bins=bins, quantile=quantile, retbins=True)
+    215 
+    216     return phik_from_rebinned_df(
+
+~\anaconda3\lib\site-packages\phik\binning.py in bin_data(data, cols, bins, quantile, retbins)
+    118             elif isinstance(bins[col], (list, np.ndarray)):
+    119                 xbins = bins[col]
+--> 120         binned_data[col], bin_labels = bin_array(data[col].astype(float).values, xbins)
+    121         if retbins:
+    122             bins_dict[col] = bin_labels
+
+~\anaconda3\lib\site-packages\pandas\core\frame.py in __setitem__(self, key, value)
+   2936         else:
+   2937             # set column
+-> 2938             self._set_item(key, value)
+   2939 
+   2940     def _setitem_slice(self, key, value):
+
+~\anaconda3\lib\site-packages\pandas\core\frame.py in _set_item(self, key, value)
+   2999         self._ensure_valid_index(value)
+   3000         value = self._sanitize_column(key, value)
+-> 3001         NDFrame._set_item(self, key, value)
+   3002 
+   3003         # check if we are modifying a copy
+
+~\anaconda3\lib\site-packages\pandas\core\generic.py in _set_item(self, key, value)
+   3622 
+   3623     def _set_item(self, key, value) -> None:
+-> 3624         self._data.set(key, value)
+   3625         self._clear_item_cache()
+   3626 
+
+~\anaconda3\lib\site-packages\pandas\core\internals\managers.py in set(self, item, value)
+   1098                 else:
+   1099                     self._blklocs[blk.mgr_locs.indexer] = -1
+-> 1100                     blk.delete(blk_locs)
+   1101                     self._blklocs[blk.mgr_locs.indexer] = np.arange(len(blk))
+   1102 
+
+~\anaconda3\lib\site-packages\pandas\core\internals\blocks.py in delete(self, loc)
+    380         Delete given loc(-s) from block in-place.
+    381         """
+--> 382         self.values = np.delete(self.values, loc, 0)
+    383         self.mgr_locs = self.mgr_locs.delete(loc)
+    384 
+
+<__array_function__ internals> in delete(*args, **kwargs)
+
+~\anaconda3\lib\site-packages\numpy\lib\function_base.py in delete(arr, obj, axis)
+   4415         keep[obj, ] = False
+   4416         slobj[axis] = keep
+-> 4417         new = arr[tuple(slobj)]
+   4418 
+   4419     if wrap:
+
+MemoryError: Unable to allocate 1.44 GiB for an array with shape (1349, 143458) and data type float64
