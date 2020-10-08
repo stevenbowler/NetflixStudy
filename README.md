@@ -5,7 +5,41 @@ Study of Netflix Trends for Dr. Lei HanSheng of University of Texas RGV Masters 
 
 Project Leader Steven Bowler 1oct2020
 
-See references directory below for original project definition, based on [Cookiecutter](www.cookiecutter.com) data sciences framework.
+See references directory below for original project definition, based on [Cookiecutter](https://drivendata.github.io/cookiecutter-data-science/) data sciences framework, which can be executed from the bash prompt thusly:
+
+````
+cookiecutter https://github.com/drivendata/cookiecutter-data-science
+````
+
+Only way to load the massive 100million record netflixstudy training data to MySQL was thru MySQL command line thusly:
+````
+sb@DESKTOP-P48C40B c:\xampp\mysql\bin
+# mysql.exe -u root --password
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 432
+Server version: 10.4.6-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use netflixstudy
+Database changed
+MariaDB [netflixstudy]> load data local infile 'df_test.csv' into table ratings;
+Query OK, 108 rows affected, 432 warnings (0.016 sec)
+Records: 108  Deleted: 0  Skipped: 0  Warnings: 432
+
+MariaDB [netflixstudy]> load data local infile 'df_test.csv' into table ratings fields terminated by ',';
+Query OK, 108 rows affected, 111 warnings (0.004 sec)
+Records: 108  Deleted: 0  Skipped: 0  Warnings: 111
+
+MariaDB [netflixstudy]> load data local infile 'df.csv' into table ratings fields terminated by ',';
+Query OK, 71833510 rows affected, 65535 warnings (6 min 47.817 sec)
+Records: 71833510  Deleted: 0  Skipped: 0  Warnings: 71833513
+
+MariaDB [netflixstudy]>
+````
 
 
 Project Organization
