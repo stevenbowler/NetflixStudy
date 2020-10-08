@@ -5,7 +5,7 @@ Study of Netflix Ratings for Dr. Lei HanSheng of University of Texas RGV Masters
 
 The purpose of the study is to develop a model for predicting movie ratings.
 
-The training dataset has over 100million ratings from 480,179 of 17,770 movies.  Ratings were from 1 to 5.
+The training dataset has over 100million ratings of 17,770 movies from 480,179 customers.  Ratings were from 1 to 5.
 
 This study uses the [Kaggle Netflix Prize dataset](https://www.kaggle.com/netflix-inc/netflix-prize-data).
 
