@@ -1,21 +1,29 @@
 NetflixStudy
 ==============================
 
-Study of Netflix Trends for Dr. Lei HanSheng of University of Texas RGV Masters Science in Computer Science
+Study of Netflix Ratings for Dr. Lei HanSheng of University of Texas RGV Masters Science in Computer Science.  
 
-Project Leader Steven Bowler 1oct2020
+The purpose of the study is to develop a model for predicting movie ratings.
 
-See references directory below for original project definition, based on [Cookiecutter](https://drivendata.github.io/cookiecutter-data-science/) data sciences framework, which can be executed from the bash prompt thusly:
+The training dataset has over 100million ratings from 480,179 of 17,770 movies.  Ratings were from 1 to 5.
 
-````
-cookiecutter https://github.com/drivendata/cookiecutter-data-science
-````
+This study uses the [Kaggle Netflix Prize dataset](https://www.kaggle.com/netflix-inc/netflix-prize-data).
 
+Project Leader Steven Bowler 1oct2020.
+
+
+### Program Documentation and Setup
+
+Based on response time (main memory vs disk) it was decided to use pandas dataframes for all studies and modelling; therefore, the following references to MySQL loading and use were not used or relevant to this study.  The MySQL database may be used if the dataframes of raw data are found to be non-workable due to size or other limitation not yet identified.
+
+
+##### MySQL reference, currently not used for study
 Only way to load the massive 100million record netflixstudy training data to MySQL was thru MySQL command line thusly:
 ````
 sb@DESKTOP-P48C40B c:\xampp\mysql\bin
 # mysql.exe -u root --password
 Enter password:
+
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 432
 Server version: 10.4.6-MariaDB mariadb.org binary distribution
@@ -26,13 +34,6 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MariaDB [(none)]> use netflixstudy
 Database changed
-MariaDB [netflixstudy]> load data local infile 'df_test.csv' into table ratings;
-Query OK, 108 rows affected, 432 warnings (0.016 sec)
-Records: 108  Deleted: 0  Skipped: 0  Warnings: 432
-
-MariaDB [netflixstudy]> load data local infile 'df_test.csv' into table ratings fields terminated by ',';
-Query OK, 108 rows affected, 111 warnings (0.004 sec)
-Records: 108  Deleted: 0  Skipped: 0  Warnings: 111
 
 MariaDB [netflixstudy]> load data local infile 'df.csv' into table ratings fields terminated by ',';
 Query OK, 71833510 rows affected, 65535 warnings (6 min 47.817 sec)
@@ -41,6 +42,12 @@ Records: 71833510  Deleted: 0  Skipped: 0  Warnings: 71833513
 MariaDB [netflixstudy]>
 ````
 
+
+See references directory below for original project definition, based on [Cookiecutter](https://drivendata.github.io/cookiecutter-data-science/) data sciences framework, which can be executed from the bash prompt thusly:
+
+````
+cookiecutter https://github.com/drivendata/cookiecutter-data-science
+````
 
 Project Organization
 ------------
