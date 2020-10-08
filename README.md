@@ -12,7 +12,7 @@ This study uses the [Kaggle Netflix Prize dataset](https://www.kaggle.com/netfli
 Project Leader Steven Bowler 1oct2020.
 
 
-### Program Documentation and Setup
+## Program Documentation and Setup
 
 Based on response time (main memory vs disk) it was decided to use pandas dataframes for all studies and modelling; therefore, the following references to MySQL loading and use were not used or relevant to this study.  The MySQL database may be used if the dataframes of raw data are found to be non-workable due to size or other limitation not yet identified.
 
@@ -43,14 +43,15 @@ MariaDB [netflixstudy]>
 ````
 
 
+Project Organization
+------------
+
 See references directory below for original project definition, based on [Cookiecutter](https://drivendata.github.io/cookiecutter-data-science/) data sciences framework, which can be executed from the bash prompt thusly:
 
 ````
 cookiecutter https://github.com/drivendata/cookiecutter-data-science
 ````
 
-Project Organization
-------------
 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
