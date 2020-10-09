@@ -1,8 +1,6 @@
 NetflixStudy
 ==============================
 
-Study of Netflix Ratings for Dr. Lei HanSheng of University of Texas RGV Masters Science in Computer Science.  
-
 The purpose of the study is to develop a model for predicting movie ratings.
 
 The training dataset has over 100million ratings of 17,770 movies from 480,179 customers.  Ratings were from 1 to 5.
